@@ -11,8 +11,8 @@ services:
     volumes:
       - ./:/src/PX4-Autopilot/:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
-      - /home/windrobo/windrobo/windrobo_ws:/src/ros2_environment/windrobo_ws
-      - /home/windrobo/windrobo/asif_project:/src/ros2_environment/asif_project
+      # - /home/windrobo/windrobo/windrobo_ws:/src/ros2_environment/windrobo_ws
+      # - /home/windrobo/windrobo/asif_project:/src/ros2_environment/asif_project
     privileged: true
     networks:
       - emp-network
@@ -20,15 +20,15 @@ services:
       - DISPLAY=:0
     depends_on:
       - ros2_foxy
-  uxrce:
-    build:
-      context: .
-      dockerfile: xrce.Dockerfile
-    image: ubuntu-xrcedds-suite
-    container_name: uxrcedds
-    tty: true
-    networks:
-      - emp-network
+  # uxrce:
+  #   build:
+  #     context: .
+  #     dockerfile: xrce.Dockerfile
+  #   image: ubuntu-xrcedds-suite
+  #   container_name: uxrcedds
+  #   tty: true
+  #   networks:
+  #     - emp-network
   qgc:
     build:
       context: .
@@ -55,7 +55,7 @@ services:
       - LOCAL_USER_ID=$(id -u)
       - DISPLAY=:0
     volumes:
-      - /home/windrobo/windrobo/windrobo_ws:/src/ros2_environment/windrobo_ws
+      # - /home/windrobo/windrobo/windrobo_ws:/src/ros2_environment/windrobo_ws
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
-      - /home/windrobo/windrobo/PX4-Autopilot:/src/PX4-Autopilot
+      # - /home/windrobo/windrobo/PX4-Autopilot:/src/PX4-Autopilot
     privileged: true
